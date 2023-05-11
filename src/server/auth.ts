@@ -75,7 +75,7 @@ export const authOptions: NextAuthOptions = {
   session: {
     strategy: 'jwt',
   },
-  secret: "secret",
+  secret: "JTjCQOz4CXq/QbaE+6KjyNer9vW93xeJrZj+D/GqYJY=",
   adapter: PrismaAdapter(prisma),
   providers: [
     CredentialsProvider({
@@ -111,8 +111,8 @@ export const authOptions: NextAuthOptions = {
       }
     }),
     GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+      clientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID as string,
+      clientSecret: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_SECRET as string,
     }),
 
     /**
