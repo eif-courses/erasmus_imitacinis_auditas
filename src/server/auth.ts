@@ -1,13 +1,13 @@
-import { type GetServerSidePropsContext } from "next";
+import { type GetServerSidePropsContext } from "next/types";
 import {
   getServerSession,
   type NextAuthOptions,
   type DefaultSession
-} from "next-auth";
+} from 'next-auth';
 
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import { prisma } from "~/server/db";
-import CredentialsProvider from "next-auth/providers/credentials";
+import CredentialsProvider from 'next-auth/providers/credentials';
 import GoogleProvider from "next-auth/providers/google";
 import { type User } from '@prisma/client';
 /**
@@ -17,7 +17,7 @@ import { type User } from '@prisma/client';
  * @see https://next-auth.js.org/getting-started/typescript#module-augmentation
  */
 
-declare module "next-auth" {
+declare module 'next-auth' {
 
   interface Session extends DefaultSession {
     user: {

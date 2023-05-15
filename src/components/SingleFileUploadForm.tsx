@@ -1,79 +1,25 @@
-import axios from "axios";
-import { z } from "zod";
+import { UploadButton } from "@uploadthing/react";
 
-import useSWR from "swr";
+import type { OurFileRouter } from "~/server/uploadthing";
 
-// GOOD TRANSFORMER
-// https://transform.tools/json-to-zod
-export const docValidator = z.object({
-  products: z.array(
-    z.object({
-      id: z.number(),
-      title: z.string(),
-      description: z.string(),
-      price: z.number(),
-      discountPercentage: z.number(),
-      rating: z.number(),
-      stock: z.number(),
-      brand: z.string(),
-      category: z.string(),
-      thumbnail: z.string(),
-      images: z.array(z.string())
-    })
-  ),
-  total: z.number(),
-  skip: z.number(),
-  limit: z.number()
-});
-
-type DocumentType = z.infer<typeof docValidator>;
-
-function Example() {
-  const fetcher = (url: string) => axios.get(url).then((res) => docValidator.parse(res.data));
-  const { data, error, isLoading } = useSWR<DocumentType>("https://dummyjson.com/products", fetcher);
-  if (error) return <div>Request Failed</div>;
-  if (isLoading) return <div>Loading...</div>;
-  if (!data) return <div>Loading...</div>;
-  return (
-    <div className="grid grid-cols-3 gap-4 place-items-stretch h-56">
-      {data?.products.map(function(d, idx) {
-        return (
-          <div className="card w-96 bg-base-100 shadow-xl" key={idx}>
-            <figure><img src={d.thumbnail} alt={d.title} /></figure>
-            <div className="card-body">
-              <h2 className="card-title">{d.title}</h2>
-              <p>{d.description}</p>
-              <div className="card-actions justify-end">
-                <button className="btn btn-primary">Buy Now</button>
-              </div>
-            </div>
-          </div>
-        );
-      })};
-    </div>
-  );
-}
-
-
-//
-
-//
-// const useDocumentData = () => {
-//   return useQuery(["repoData"], async () => {
-//       const res:DocumentType[] = await axios.get("https://api.github.com/repositories/207645083");
-//       return docValidator.parse(res);
-//     }, {
-//       onError: (error) => {
-//         console.log(error);
-//       },
-//       onSuccess: (data) => {
-//         console.log(data);
-//       }
-//     }
-//   );
-// };
-
+// You need to import our styles for the button to look right. Best to import in the root /_app.tsx but this is fine
+import "@uploadthing/react/styles.css";
 
 export default function UploadForm() {
-  return (<Example />);
+    return (
+        <main className="flex min-h-screen flex-col items-center justify-between p-24">
+            <UploadButton<OurFileRouter>
+                endpoint="imageUploader"
+                onClientUploadComplete={(res) => {
+                    // Do something with the response
+                    console.log("Files: ", res);
+                    alert("Upload Completed");
+                }}
+                onUploadError={(error: Error) => {
+                    // Do something with the error.
+                    alert(`ERROR! ${error.message}`);
+                }}
+            />
+        </main>
+    );
 }
