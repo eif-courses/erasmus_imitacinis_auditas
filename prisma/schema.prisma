@@ -48,17 +48,18 @@ model Session {
 }
 
 model User {
-  id            String    @id @default(cuid())
-  username      String?   @unique
+  id            String     @id @default(cuid())
+  username      String?    @unique
   password      String?
   name          String?
-  email         String?   @unique
+  email         String?    @unique
   emailVerified DateTime?
   image         String?
-  role          String?   @default("user") // user, admin
+  role          String?    @default("user") // user, admin
+  europencode   String?
   accounts      Account[]
   sessions      Session[]
-  topics        Topic[]
+  documents     Document[]
 }
 
 model VerificationToken {
@@ -69,22 +70,32 @@ model VerificationToken {
   @@unique([identifier, token])
 }
 
-model Topic {
+// model Topic {
+//   id        String   @id @default(cuid())
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+//   title     String
+//   user      User     @relation(fields: [userId], references: [id])
+//   userId    String
+//   notes     Note[]
+// }
+
+model Document {
   id        String   @id @default(cuid())
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   title     String
+  url       String
   user      User     @relation(fields: [userId], references: [id])
   userId    String
-  notes     Note[]
 }
 
-model Note {
-  id        String   @id @default(cuid())
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  title     String
-  content   String
-  topic     Topic    @relation(fields: [topicId], references: [id])
-  topicId   String
-}
+// model Note {
+//   id        String   @id @default(cuid())
+//   createdAt DateTime @default(now())
+//   updatedAt DateTime @updatedAt
+//   title     String
+//   content   String
+//   topic     Topic    @relation(fields: [topicId], references: [id])
+//   topicId   String
+// }

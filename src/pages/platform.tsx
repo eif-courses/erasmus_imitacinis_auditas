@@ -1,6 +1,5 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import { Header } from "src/components/Header";
 import { useSession } from "next-auth/react";
 
 // https://www.youtube.com/watch?v=J1gzN1SAhyM
@@ -23,7 +22,7 @@ const Platform: NextPage = () => {
       }
 
       <main className="container mx-auto">
-        <Header />
+
         <section className="container px-4 mx-auto">
           <div className="sm:flex sm:items-center sm:justify-between">
             <div>

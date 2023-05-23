@@ -1,6 +1,6 @@
 import { type NextPage } from "next";
 import Head from "next/head";
-import { Header } from "src/components/Header";
+
 import { useSession } from "next-auth/react";
 import { api, type RouterOutputs } from "~/utils/api";
 import { useState } from "react";
@@ -15,8 +15,6 @@ const Contacts: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="container mx-auto">
-        <Header />
-
 
         <section className="bg-white py-20 lg:py-[120px] overflow-hidden relative z-10">
           <div className="container">
