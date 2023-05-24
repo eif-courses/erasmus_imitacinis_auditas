@@ -2,10 +2,11 @@ import { type NextPage } from "next";
 import Head from "next/head";
 import { useSession } from "next-auth/react";
 import {PaperClipIcon} from "@heroicons/react/20/solid";
-import Details from "~/components/Details";
+import TaskUploader from "~/components/UploadTasks";
+
 
 // https://www.youtube.com/watch?v=J1gzN1SAhyM
-const Info: NextPage = () => {
+const Tasks: NextPage = () => {
   const { data: session } = useSession();
   // console.log(session?.user);
   // console.log(session?.user.role);
@@ -24,10 +25,10 @@ const Info: NextPage = () => {
       {/*}*/}
 
       <div>
-    <Details/>
+    <TaskUploader/>
       </div>
     </>
   );
 };
-export default Info;
+export default Tasks;
 

@@ -34,10 +34,10 @@ export const Header = ({children}) => {
     }
     const navigation = [
         {name: 'Home', href: '/', current: true},
-        {name: 'Team', href: '#', current: false},
-        {name: 'Projects', href: '#', current: false},
-        {name: 'Info', href: '/info', current: false},
-        {name: 'Reports', href: '#', current: false},
+        {name: 'Students', href: '#', current: false},
+        {name: 'Tasks', href: '/tasks', current: false},
+        {name: 'Profile', href: '/info', current: false},
+        {name: 'Manage', href: '#', current: false},
     ]
     const userNavigation = [
         {name: 'Your Profile', href: '#'},
