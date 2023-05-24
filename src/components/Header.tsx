@@ -83,19 +83,12 @@ export const Header = ({children}) => {
                                                         {item.name}
                                                     </Link>
                                                 ))}
+                                                <Nav/>
                                             </div>
                                         </div>
                                     </div>
                                     <div className="hidden md:block">
                                         <div className="ml-4 flex items-center md:ml-6">
-                                            <button
-                                                type="button"
-                                                className="rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                                            >
-                                                <span className="sr-only">View notifications</span>
-                                                <BellIcon className="h-6 w-6" aria-hidden="true"/>
-                                            </button>
-
                                             {/* Profile dropdown */}
 
                                             {sessionData?.user ?
@@ -139,6 +132,7 @@ export const Header = ({children}) => {
                                                         </Menu.Items>
                                                     </Transition>
                                                 </Menu>
+
                                                 : (
                                                     <button
                                                         type="submit"
@@ -195,13 +189,6 @@ export const Header = ({children}) => {
                                             <div
                                                 className="text-sm font-medium leading-none text-gray-400">{sessionData?.user?.email}</div>
                                         </div>
-                                        <button
-                                            type="button"
-                                            className="ml-auto flex-shrink-0 rounded-full bg-gray-800 p-1 text-gray-400 hover:text-white focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                                        >
-                                            <span className="sr-only">View notifications</span>
-                                            <BellIcon className="h-6 w-6" aria-hidden="true"/>
-                                        </button>
                                     </div>
                                     <div className="mt-3 space-y-1 px-2">
                                         {userNavigation.map((item) => (
@@ -215,12 +202,14 @@ export const Header = ({children}) => {
                                                 {item.name}
                                             </Disclosure.Button>
                                         ))}
+                                        <Nav/>
                                     </div>
                                 </div>
                             </Disclosure.Panel>
                         </>
                     )}
                 </Disclosure>
+
 
                 <header className="bg-white shadow">
                     <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
