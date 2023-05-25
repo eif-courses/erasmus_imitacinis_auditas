@@ -4,5 +4,7 @@ Sukurti prisma client:
     npx prisma generate
 
 
+"db:push": "npx prisma db push"
+
 
 

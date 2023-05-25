@@ -3,6 +3,8 @@ import Head from "next/head";
 import { useSession } from "next-auth/react";
 import {PaperClipIcon} from "@heroicons/react/20/solid";
 import TaskUploader from "~/components/UploadTasks";
+import Users from "~/components/Company";
+import Registration from "~/components/Registration";
 
 
 // https://www.youtube.com/watch?v=J1gzN1SAhyM
@@ -25,7 +27,8 @@ const Tasks: NextPage = () => {
       {/*}*/}
 
       <div>
-    <TaskUploader/>
+          <Registration/>
+    <Users/>
       </div>
     </>
   );

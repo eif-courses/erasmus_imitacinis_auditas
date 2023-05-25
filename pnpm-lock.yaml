@@ -31,6 +31,9 @@ dependencies:
   axios:
     specifier: ^1.4.0
     version: 1.4.0
+  easy-soap-request:
+    specifier: ^5.3.0
+    version: 5.3.0
   next:
     specifier: ^13.4.3
     version: 13.4.3(react-dom@18.2.0)(react@18.2.0)
@@ -2143,6 +2146,14 @@ packages:
     dependencies:
       esutils: 2.0.3
     dev: true
+
+  /easy-soap-request@5.3.0:
+    resolution: {integrity: sha512-p06gAo5VsCPk3zkPy7iUsRqxW0SfsU4fi/KxxlKZ/J+ASfl27qpmxrH4+ALPTR8sECS+BPYFEJPzYY6Y6eK2mQ==}
+    dependencies:
+      axios: 1.4.0
+    transitivePeerDependencies:
+      - debug
+    dev: false
 
   /electron-to-chromium@1.4.376:
     resolution: {integrity: sha512-TFeOKd98TpJzRHkr4Aorn16QkMnuCQuGAE6IZ0wYF+qkbSfMPqjplvRppR02tMUpVxZz8nyBNvVm9lIZsqrbPQ==}
