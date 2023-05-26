@@ -34,7 +34,7 @@ export const Header = ({children}) => {
     }
     const navigation = [
         {name: 'Home', href: '/', current: true},
-        {name: 'Students', href: '#', current: false},
+        {name: 'Students', href: '/students', current: false},
         {name: 'Tasks', href: '/tasks', current: false},
         {name: 'Profile', href: '/info', current: false},
         {name: 'Manage', href: '#', current: false},
@@ -98,7 +98,7 @@ export const Header = ({children}) => {
                                                             className="flex max-w-xs items-center rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800">
                                                             <span className="sr-only">Open user menu</span>
                                                             <img className="h-8 w-8 rounded-full"
-                                                                 src={sessionData?.user?.image ? sessionData.user.image : "https://whizsoftwares.in/DMIMS/wp-content/uploads/2022/09/default-avatar-profile-icon-vector-unknown-social-media-user-photo-default-avatar-profile-icon-vector-unknown-social-media-user-184816085.jpg"}
+                                                                 src={sessionData?.user?.image ? sessionData.user.image : "profile.png"}
                                                                  alt=""/>
                                                         </Menu.Button>
                                                     </div>
@@ -180,7 +180,7 @@ export const Header = ({children}) => {
                                     <div className="flex items-center px-5">
                                         <div className="flex-shrink-0">
                                             <img className="h-10 w-10 rounded-full"
-                                                 src={sessionData?.user?.image ? sessionData.user.image : "https://whizsoftwares.in/DMIMS/wp-content/uploads/2022/09/default-avatar-profile-icon-vector-unknown-social-media-user-photo-default-avatar-profile-icon-vector-unknown-social-media-user-184816085.jpg"}
+                                                 src={sessionData?.user?.image ? sessionData.user.image : "profile.png"}
                                                  alt=""/>
                                         </div>
                                         <div className="ml-3">
@@ -209,11 +209,9 @@ export const Header = ({children}) => {
                         </>
                     )}
                 </Disclosure>
-
-
                 <header className="bg-white shadow">
                     <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-                        <h1 className="text-3xl font-bold tracking-tight text-gray-900">{router.locale}</h1>
+                        <h1 className="text-3xl font-bold tracking-tight text-gray-900">{router.asPath.toUpperCase().substring(1) == "" ? "HOME": router.asPath.toUpperCase().substring(1)}</h1>
                     </div>
                 </header>
                 <main>
