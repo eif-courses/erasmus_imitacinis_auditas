@@ -35,12 +35,12 @@ export default function Registration() {
                     e.preventDefault();
                     const formData = new FormData(e.currentTarget);
                     createUser.mutate({
-                        username: "dddd",
-                        password: "cccc",
-                        name: formData.get("username") as string,
-                        email: "qqq@q@adwa.lt",
-                        role: "ADMIN",
-                        europencode: "cweaweaw"
+                        username: formData.get("username") as string,
+                        password: formData.get("password") as string,
+                        name: formData.get("fullname") as string,
+                        email: formData.get("email") as string,
+                        role: role,
+                        europencode: formData.get("europencode") as string
                     });
                 }}>
 
@@ -67,6 +67,16 @@ export default function Registration() {
                                placeholder={role == "teacher" ? "Username from https://penapps.penworldwide.org/" : " Username"}
                                required/>
                     </div>
+
+
+                    {role == "user" ? <div className="mb-6">
+                        <label htmlFor="fullname"
+                               className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Full Name</label>
+                        <input type="text" name="fullname" id="fullname"
+                               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                               placeholder="Need for certificate" required/>
+                    </div> : null}
+
                     <div className="mb-6">
                         <label htmlFor="password"
                                className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">{role == "teacher" ? "Password From (https://penapps.penworldwide.org/)" : "Password"}</label>
@@ -87,7 +97,7 @@ export default function Registration() {
                         <label htmlFor="email"
                                className="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Email
                             address</label>
-                        <input type="email" id="email"
+                        <input type="email" id="email" name="email"
                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                                placeholder="john.doe@company.com" required/>
                     </div>
