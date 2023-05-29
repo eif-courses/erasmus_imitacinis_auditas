@@ -45,6 +45,7 @@ declare module 'next-auth' {
 
 
 
+// @ts-ignore
 /**
  * Options for NextAuth.js used to configure adapters, providers, callbacks, etc.
  *
@@ -52,20 +53,41 @@ declare module 'next-auth' {
  */
 export const authOptions: NextAuthOptions = {
   callbacks: {
-    session({ session, token }) {
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+
+    session: ({ session, token }) => {
       // @ts-ignore
-      session.user.id = token.id;
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      session.user.username = token.username;
+      session.user = {
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore
+        id: token.id,
+        // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+        // @ts-ignore,
+        username: token.username,
+        // @ts-ignore,
+        role: token.role,
+      };
       return session;
     },
+
+    // session({ session, token }) => {
+    //
+    //
+    //   // @ts-ignore
+    //   session.user ={
+    //     id: token.id,
+    //     username: token.username,
+    //   };
+
+
+
+//      return session;
+  //  },
     jwt({ token, account, user }) {
       if (account) {
         token.accessToken = account.access_token;
         token.id = user.id;
         token.username = (user as User).username;
+        token.role = (user as User).role;
         //token.username = (user as User).username;
         console.log({ user });
       }

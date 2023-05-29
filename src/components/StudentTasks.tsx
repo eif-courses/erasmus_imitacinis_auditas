@@ -14,8 +14,6 @@ export default function StudentTasks() {
 
     return (
         <>
-
-
             <table className="border-collapse w-full">
                 <thead>
                 <tr>

@@ -33,15 +33,17 @@ export const Header = ({children}) => {
             'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80',
     }
     const navigation = [
-        {name: 'Home', href: '/', current: true},
-        {name: 'Students', href: '/students', current: false},
-        {name: 'Tasks', href: '/tasks', current: false},
-        {name: 'Profile', href: '/info', current: false},
-        {name: 'Manage', href: '#', current: false},
+        {name: 'Home', href: '/', current: true, role: 'user'},
+        {name: 'Home', href: '/', current: true, role: 'teacher'},
+        {name: 'Students', href: '/students', current: false, role: 'teacher'},
+        {name: 'Tasks', href: '/tasks', current: false, role: 'teacher'},
+        {name: 'Profile', href: '/info', current: false, role: 'teacher'},
+        {name: 'Profile', href: '/info', current: false, role: 'user'},
+        {name: 'Manage', href: '#', current: false, role: 'user'},
     ]
     const userNavigation = [
-        {name: 'Your Profile', href: '#'},
-        {name: 'Settings', href: '#'},
+        {name: 'Your Profile', href: '/info'},
+        {name: 'Settings', href: '/manage'},
         {name: 'Sign out', href: '#'},
     ]
 
@@ -69,7 +71,7 @@ export const Header = ({children}) => {
                                         <div className="hidden md:block">
                                             <div className="ml-10 flex items-baseline space-x-4">
                                                 {navigation.map((item) => (
-                                                    <Link
+                                                    item.role === sessionData?.user.role ? (<Link
                                                         key={item.name}
                                                         href={item.href}
                                                         className={classNames(
@@ -81,7 +83,7 @@ export const Header = ({children}) => {
                                                         aria-current={item.current ? 'page' : undefined}
                                                     >
                                                         {item.name}
-                                                    </Link>
+                                                    </Link>): null
                                                 ))}
                                                 <Nav/>
                                             </div>
@@ -163,7 +165,8 @@ export const Header = ({children}) => {
                             <Disclosure.Panel className="md:hidden">
                                 <div className="space-y-1 px-2 pb-3 pt-2 sm:px-3">
                                     {navigation.map((item) => (
-                                        <Link href={item.href} key={item.name}>
+
+                                        item.role === sessionData?.user.role ? ( <Link href={item.href} key={item.name}>
                                             <Disclosure.Button
                                                 className={classNames(
                                                     router.pathname == item.href ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
@@ -173,7 +176,7 @@ export const Header = ({children}) => {
                                             >
                                                 {item.name}
                                             </Disclosure.Button>
-                                        </Link>
+                                        </Link>): null
                                     ))}
                                 </div>
                                 <div className="border-t border-gray-700 pb-3 pt-4">
@@ -211,7 +214,7 @@ export const Header = ({children}) => {
                 </Disclosure>
                 <header className="bg-white shadow">
                     <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-                        <h1 className="text-3xl font-bold tracking-tight text-gray-900">{router.asPath.toUpperCase().substring(1) == "" ? "HOME": router.asPath.toUpperCase().substring(1)}</h1>
+                        <h1 className="text-3xl font-bold tracking-tight text-gray-900">{router.asPath.toUpperCase().substring(1) == "" ? "HOME" : router.asPath.toUpperCase().substring(1)}</h1>
                     </div>
                 </header>
                 <main>
