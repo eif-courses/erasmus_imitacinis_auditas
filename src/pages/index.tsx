@@ -123,7 +123,7 @@ const Home: NextPage = () => {
                                 </div>
 
 
-                                {!session?.user?.username ?
+                                {!session?.user?.email ?
                                     (
                                         <Link
                                             href="/registration"
