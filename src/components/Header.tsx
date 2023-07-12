@@ -36,6 +36,8 @@ export const Header = ({children}) => {
         {name: 'Home', href: '/', current: true, role: 'user'},
         {name: 'Home', href: '/', current: true, role: 'teacher'},
         {name: 'Students', href: '/students', current: false, role: 'teacher'},
+        {name: 'Assignments', href: '/assignments', current: false, role: 'teacher'},
+        {name: 'Assignments', href: '/assignments', current: false, role: 'user'},
         {name: 'Tasks', href: '/tasks', current: false, role: 'teacher'},
         {name: 'Profile', href: '/info', current: false, role: 'teacher'},
         {name: 'Profile', href: '/info', current: false, role: 'user'},
