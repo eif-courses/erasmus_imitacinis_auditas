@@ -54,7 +54,18 @@ declare module 'next-auth' {
 export const authOptions: NextAuthOptions = {
   callbacks: {
 
-    session: ({ session, token }) => {
+    jwt({ token, account, user }) {
+      if (account) {
+        token.accessToken = account.access_token;
+        token.id = user.id;
+        token.username = (user as User).username;
+        token.role = (user as User).role;
+        //token.username = (user as User).username;
+        console.log({ user });
+      }
+      return token;
+    },
+    session({ session, token }) {
       // @ts-ignore
       session.user = {
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
@@ -68,30 +79,8 @@ export const authOptions: NextAuthOptions = {
       };
       return session;
     },
-
-    // session({ session, token }) => {
-    //
-    //
-    //   // @ts-ignore
-    //   session.user ={
-    //     id: token.id,
-    //     username: token.username,
-    //   };
-
-
-
-//      return session;
-  //  },
-    jwt({ token, account, user }) {
-      if (account) {
-        token.accessToken = account.access_token;
-        token.id = user.id;
-        token.username = (user as User).username;
-        token.role = (user as User).role;
-        //token.username = (user as User).username;
-        console.log({ user });
-      }
-      return token;
+    redirect({baseUrl}) {
+      return baseUrl;
     },
   },
   session: {
