@@ -49,6 +49,18 @@ export const Header = ({children}) => {
         {name: 'Sign out', href: '#'},
     ]
 
+
+
+
+    // SIMPLE EXAMPLE TO MAKE A LINK PROTECTED
+    // function ProtectedLink() {
+    //     const {data: session} = useSession()
+    //     return <Link href={session ? '/protected' : '/login?callbackUrl=/protected'} prefetch={!!session}};
+    //         }
+
+
+
+
     // @ts-ignore
     function classNames(...classes) {
         return classes.filter(Boolean).join(' ')
