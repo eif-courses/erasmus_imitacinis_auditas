@@ -8,28 +8,24 @@ import "@uploadthing/react/styles.css";
 
 export default function UploadForm() {
     return (
-        <main className="flex min-h-screen flex-col items-center justify-between p-24">
-            <div className="flex flex-col items-center justify-center gap-4">
-        <span className="text-4xl font-bold text-center">
-          {`Upload a file using a button:`}
-        </span>
-
-                <UploadButton<OurFileRouter>
-                    endpoint="imageUploader"
-                    onClientUploadComplete={(res) => {
-                        // Do something with the response
-                        console.log("Files: ", res);
-                        alert("Upload Completed");
-                    }}
-                    onUploadError={(error: Error) => {
-                        alert(`ERROR! ${error.message}`);
-                    }}
-                />
-            </div>
-            <div className="flex flex-col items-center justify-center gap-4">
-        <span className="text-4xl font-bold text-center">
-          {`...or using a dropzone:`}
-        </span>
+        // <main className="flex min-h-screen flex-col items-center justify-between p-24">
+        //     <div className="flex flex-col items-center justify-center gap-4">
+        // <span className="text-4xl font-bold text-center">
+        //   {`Upload a file using a button:`}
+        // </span>
+        //
+        //         <UploadButton<OurFileRouter>
+        //             endpoint="imageUploader"
+        //             onClientUploadComplete={(res) => {
+        //                 // Do something with the response
+        //                 console.log("Files: ", res);
+        //                 alert("Upload Completed");
+        //             }}
+        //             onUploadError={(error: Error) => {
+        //                 alert(`ERROR! ${error.message}`);
+        //             }}
+        //         />
+        //     </div>
                 <UploadDropzone<OurFileRouter>
                     endpoint="imageUploader"
                     onClientUploadComplete={(res) => {
@@ -41,7 +37,7 @@ export default function UploadForm() {
                         alert(`ERROR! ${error.message}`);
                     }}
                 />
-            </div>
-        </main>
+
+       // </main>
     );
 }

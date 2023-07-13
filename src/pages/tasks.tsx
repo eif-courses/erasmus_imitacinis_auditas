@@ -12,6 +12,7 @@ import StudentTasks from "~/components/StudentTasks";
 import TaskDetails from "~/components/TaskDetails";
 import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
+import UploadForm from "~/components/SingleFileUploadForm";
 
 // https://www.youtube.com/watch?v=J1gzN1SAhyM
 const Tasks: NextPage = () => {

@@ -1,17 +1,14 @@
-import ReactQuill from "react-quill";
-import React, {useRef, useState} from "react";
+import React, {useState} from "react";
 import dynamic from "next/dynamic";
 
 
 export default function Editor() {
-    const [quilValue, quilSetValue] = useState('');
+    //const [quilValue, quilSetValue] = useState('');
     //const quillRef = useRef();
     const QuillNoSSRWrapper = dynamic(import('react-quill'), {
         ssr: false,
         loading: () => <p>Loading ...</p>,
     })
-
-
 
     const modules = {
         toolbar: [

@@ -1,7 +1,6 @@
 import axios from "axios";
 import useSWR from "swr";
-import {useRouter} from "next/router";
-import {useSession} from "next-auth/react";
+
 import bg from "../../locales/bg";
 import en from "../../locales/en";
 import fr from "../../locales/fr";
@@ -9,6 +8,8 @@ import de from "../../locales/de";
 import it from "../../locales/it";
 import lt from "../../locales/lt";
 import Link from "next/link";
+import {useRouter} from "next/router";
+import {useSession} from "next-auth/react";
 import React, {useRef, useState} from "react";
 //import 'react-quill/dist/quill.snow.css';
 import dynamic from 'next/dynamic'
@@ -47,22 +48,6 @@ export default function StudentTasks() {
     const {data, error} = useSWR(address, fetcher);
 
     const [toggle, setToggle] = useState(true)
-    const [valueCalendar, setCalendarValue] = useState({
-        startDate: new Date(),
-        endDate: null
-    });
-    // @ts-ignore
-    const handleCalendarValueChange = (newValue) => {
-        console.log("newValue:", newValue);
-        setCalendarValue(newValue);
-    }
-
-
-    const [value, setValue] = useState('');
-    const handleValueChange = (newValue: string) => {
-        //console.log("newValue:", newValue);
-        setValue(newValue);
-    }
 
     if (error) <p>Loading failed...</p>;
     if (!data) <h1>Loading...</h1>;
@@ -92,7 +77,7 @@ export default function StudentTasks() {
                         {!session?.user?.email ?
                             (
                                 toggle ? (
-                                    <button type="button"
+                                    <button
                                             onClick={() => setToggle(!toggle)}
                                             className="inline-block rounded-md border border-transparent bg-green-600 px-3 py-1.5 text-center font-medium text-white hover:bg-green-700"
                                     >
@@ -138,7 +123,7 @@ export default function StudentTasks() {
                                         <div className="text-left font-medium text-green-500">
 
                                             {isVisible ?
-                                                <button type="button" onClick={isVisibleToggle}>
+                                                <button onClick={isVisibleToggle}>
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                          viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"
                                                          className="w-6 h-6">
@@ -149,7 +134,7 @@ export default function StudentTasks() {
                                                     </svg>
                                                 </button>
                                                 :
-                                                <button type="button" onClick={isVisibleToggle} className="text-black">
+                                                <button onClick={isVisibleToggle} className="text-black">
                                                     <svg xmlns="http://www.w3.org/2000/svg" fill="none"
                                                          viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor"
                                                          className="w-6 h-6">
@@ -343,12 +328,11 @@ export default function StudentTasks() {
                         </div>
 
                         <div className="mt-2 mb-5 mr-5 flex items-center justify-end gap-x-6">
-                            <button onClick={() => setToggle(!toggle)} type="button"
+                            <button onClick={() => setToggle(!toggle)}
                                     className="text-sm font-semibold leading-6 text-gray-900">
                                 Cancel
                             </button>
                             <button
-                                type="submit"
                                 className="rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
                             >
                                 Save
@@ -408,14 +392,12 @@ export default function StudentTasks() {
                                     </div>
                                     <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                                         <button
-                                            type="button"
                                             className="inline-flex w-full justify-center rounded-md bg-red-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-red-500 sm:ml-3 sm:w-auto"
                                             onClick={() => setOpen(false)}
                                         >
                                             Remove
                                         </button>
                                         <button
-                                            type="button"
                                             className="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto"
                                             onClick={() => setOpen(false)}
                                             ref={cancelButtonRef}
