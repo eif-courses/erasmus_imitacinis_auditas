@@ -74,6 +74,7 @@ export const Header = ({children}) => {
                                             <div className="ml-10 flex items-baseline space-x-4">
                                                 {navigation.map((item) => (
                                                     item.role === sessionData?.user.role ? (<Link
+                                                        prefetch={false}
                                                         key={item.name}
                                                         href={item.href}
                                                         className={classNames(
