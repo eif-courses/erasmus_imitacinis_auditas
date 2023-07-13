@@ -10,6 +10,7 @@ import { prisma } from "~/server/db";
 import CredentialsProvider from 'next-auth/providers/credentials';
 import GoogleProvider from "next-auth/providers/google";
 import { type User } from '@prisma/client';
+import * as process from "process";
 /**
  * Module augmentation for `next-auth` types. Allows us to add custom properties to the `session`
  * object and keep type safety.
@@ -86,7 +87,7 @@ export const authOptions: NextAuthOptions = {
   session: {
     strategy: 'jwt',
   },
-  secret: "JTjCQOz4CXq/QbaE+6KjyNer9vW93xeJrZj+D/GqYJY=",
+  secret: process.env.NEXTAUTH_SECRET,
   adapter: PrismaAdapter(prisma),
   providers: [
     CredentialsProvider({
