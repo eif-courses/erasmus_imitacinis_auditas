@@ -54,7 +54,7 @@ const OverlayCertificate = () => {
                     <View style={styles.container}>
                         <Image src="https://static.vecteezy.com/system/resources/previews/002/607/705/original/blue-and-gold-certificate-of-achievement-template-set-background-with-gold-badge-and-border-award-diploma-design-blank-illustration-eps10-free-vector.jpg" style={styles.image} />
                         <Text style={styles.text}>Marius Gžegoževskis</Text>
-                        <Text style={styles.date}>2023-05-04</Text>
+                        <Text style={styles.date}>2023-08-04</Text>
                         <Image src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3a/Jon_Kirsch%27s_Signature.png/1280px-Jon_Kirsch%27s_Signature.png" style={styles.signature} />
 
                     </View>
